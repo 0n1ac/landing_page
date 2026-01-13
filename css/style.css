@@ -65,6 +65,48 @@ ul {
     padding: 0 20px;
 }
 
+/* Hero Badges */
+.hero-badges {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    background-color: #FFF5E0;
+    /* Light orange/yellow bg */
+    color: #4CAF50;
+    /* Green text as per Withyou branding */
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.feature-detail {
+    background-color: var(--bg-light);
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.feature-detail strong {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.feature-detail p {
+    font-size: 1rem;
+    margin-bottom: 0;
+    color: var(--text-main);
+}
+
 /* Header */
 header {
     position: fixed;
@@ -658,6 +700,139 @@ footer {
         padding: 8px 15px;
         font-size: 0.9rem;
     }
+}
+
+/* Pre-order Section */
+#preorder {
+    padding: 100px 0;
+    background-color: var(--bg-light);
+    text-align: center;
+}
+
+.preorder-box {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+    max-width: 800px;
+    margin: 0 auto;
+    border: 2px solid var(--primary-color);
+}
+
+.preorder-box h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.preorder-box p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: var(--text-muted);
+}
+
+.progress-wrapper {
+    margin-top: 30px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 30px;
+    background-color: #eee;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 15px;
+    transition: width 1s ease-in-out;
+}
+
+.progress-stats {
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+/* Notification Section */
+#notification {
+    padding: 80px 0;
+    background-color: var(--white);
+}
+
+.notify-form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.notify-form input {
+    padding: 12px 20px;
+    border: 2px solid #eee;
+    border-radius: 50px;
+    width: 300px;
+    font-size: 1rem;
+    outline: none;
+    transition: var(--transition);
+}
+
+.notify-form input:focus {
+    border-color: var(--primary-color);
+}
+
+/* Google Form & Feedback */
+#feedback {
+    padding: 80px 0;
+    background-color: var(--bg-light);
+}
+
+.google-form-wrapper {
+    margin-top: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    background: white;
+}
+
+.ui-clock {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 8px solid var(--primary-color);
+    position: relative;
+    background: white;
+}
+
+.ui-clock::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 40px;
+    background: var(--text-main);
+    top: 50%;
+    left: 50%;
+    transform-origin: top center;
+    transform: translate(-50%, -100%) rotate(45deg);
+}
+
+.ui-clock::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 30px;
+    background: var(--text-main);
+    top: 50%;
+    left: 50%;
+    transform-origin: top center;
+    transform: translate(-50%, -100%) rotate(-90deg);
 }
 
 /* Toggle Animation */
