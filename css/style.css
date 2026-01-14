@@ -76,8 +76,8 @@ ul {
 .badge {
     background-color: #FFF5E0;
     /* Light orange/yellow bg */
-    color: #4CAF50;
-    /* Green text as per Withyou branding */
+    color: var(--text-main);
+    /* Dark text instead of green */
     padding: 6px 12px;
     border-radius: 20px;
     font-size: 0.9rem;
@@ -136,11 +136,13 @@ header .container {
 }
 
 .logo-icon {
-    width: 24px;
-    height: 24px;
-    background-color: var(--primary-color);
-    border-radius: 6px;
+    display: none;
+}
+
+.logo-img {
+    height: 52px;
     margin-right: 10px;
+    width: auto;
 }
 
 .nav-links {
