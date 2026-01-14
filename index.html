@@ -189,21 +189,28 @@
                         <span id="current-preorders">6,542</span>명이 예약중 / 목표 10,000명
                     </div>
                 </div>
+
+                <form id="preorder-form" class="preorder-form">
+                    <div class="input-group">
+                        <input type="email" placeholder="이메일 주소를 입력하세요" required>
+                        <button type="submit" class="btn btn-primary">신청하기</button>
+                    </div>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="preorder" checked>
+                            <span>10,000명 달성 시 $0.99 할인 혜택 받기 (사전 예약)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="notification" checked>
+                            <span>앱 출시 소식 받기 (알림 신청)</span>
+                        </label>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
 
-    <!-- App Launch Notification -->
-    <section id="notification">
-        <div class="container text-center" data-animate="fade-up">
-            <h2>앱 출시 알림 신청</h2>
-            <p>가장 먼저 소식을 받아보세요.</p>
-            <form id="notify-form" class="notify-form">
-                <input type="email" placeholder="이메일 주소를 입력하세요" required>
-                <button type="submit" class="btn btn-primary">신청하기</button>
-            </form>
-        </div>
-    </section>
+
 
     <!-- Google Form Section -->
     <section id="feedback">

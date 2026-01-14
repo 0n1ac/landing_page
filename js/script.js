@@ -67,15 +67,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (countElement) {
         let currentCount = 6542;
         const targetCount = 10000;
-        
+
         function updateCount() {
             // Simulate random increase
             if (Math.random() > 0.6) {
                 currentCount += Math.floor(Math.random() * 3);
                 if (currentCount > targetCount) currentCount = targetCount;
-                
+
                 countElement.innerText = currentCount.toLocaleString();
-                
+
                 // Update progress bar width calculation
                 const progressFill = document.querySelector('.progress-fill');
                 if (progressFill) {
@@ -90,13 +90,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Notification Form Handling
-    const notifyForm = document.getElementById('notify-form');
-    if (notifyForm) {
-        notifyForm.addEventListener('submit', function(e) {
+    // Pre-order & Notification Form Handling
+    const preorderForm = document.getElementById('preorder-form');
+    if (preorderForm) {
+        preorderForm.addEventListener('submit', function (e) {
             e.preventDefault();
             const emailInput = this.querySelector('input[type="email"]');
+            const preorderCheck = this.querySelector('input[name="preorder"]');
+            const notificationCheck = this.querySelector('input[name="notification"]');
+
             if (emailInput && emailInput.value) {
-                alert('알림 신청이 완료되었습니다! (' + emailInput.value + ')');
+                if (!preorderCheck.checked && !notificationCheck.checked) {
+                    alert('최소한 하나의 옵션을 선택해주세요.');
+                    return;
+                }
+
+                let message = '신청이 완료되었습니다!\n';
+                message += '이메일: ' + emailInput.value + '\n';
+
+                if (preorderCheck.checked) message += '- 사전 예약 (가격 할인) 신청됨\n';
+                if (notificationCheck.checked) message += '- 앱 출시 알림 신청됨';
+
+                alert(message);
                 emailInput.value = '';
             }
         });
