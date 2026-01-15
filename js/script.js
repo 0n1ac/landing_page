@@ -117,8 +117,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // 배포한 URL
             const scriptURL = 'https://script.google.com/macros/s/AKfycbxk0XEWPMK6G4dYCyb_nvg3lQwXgSyamNhD5jngBQj9MmyTwNhCNel1rmtpOvMK4JCaww/exec';
 
-            fetch(scriptURL, { method: 'POST', body: formData })
+            fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
                 .then(response => {
+                    // no-cors 모드에서는 response가 불투명(opaque)하여 status를 확인할 수 없습니다.
+                    // 에러 없이 도달했다면 전송 성공으로 간주합니다.
                     alert('신청이 완료되었습니다!');
                     preorderForm.reset();
                     btn.innerText = originalBtnText;
