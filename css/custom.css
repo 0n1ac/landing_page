@@ -1,0 +1,17 @@
+/* Add to css/style.css */
+
+.text-primary {
+    color: var(--primary-color);
+}
+
+.hero-subtitle {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    /* Spacing requested */
+}
