@@ -157,18 +157,31 @@
                     </div>
                 </div>
 
-                <form id="preorder-form" class="preorder-form">
+                <!-- Hidden Iframe for Form Submission -->
+                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+                <form id="preorder-form" class="preorder-form"
+                    action="https://script.google.com/macros/s/AKfycbxk0XEWPMK6G4dYCyb_nvg3lQwXgSyamNhD5jngBQj9MmyTwNhCNel1rmtpOvMK4JCaww/exec"
+                    method="POST" target="hidden_iframe">
+
                     <div class="input-group">
                         <input type="email" name="email" placeholder="이메일 주소를 입력하세요" required>
                         <button type="submit" id="submitBtn" class="btn btn-primary">신청하기</button>
                     </div>
+
+                    <!-- 실제 전송될 값 (Hidden) -->
+                    <input type="hidden" name="is_preorder" id="hidden_is_preorder" value="O">
+                    <input type="hidden" name="is_alarm" id="hidden_is_alarm" value="O">
+
                     <div class="checkbox-group">
                         <label class="checkbox-label">
-                            <input type="checkbox" name="is_preorder" value="true" checked>
+                            <!-- name 속성 제거 (전송 안됨) -->
+                            <input type="checkbox" id="chk_preorder" value="true" checked>
                             <span>10,000명 달성 시 $0.99 할인 혜택 받기 (사전 예약)</span>
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" name="is_alarm" value="true" checked>
+                            <!-- name 속성 제거 (전송 안됨) -->
+                            <input type="checkbox" id="chk_alarm" value="true" checked>
                             <span>앱 출시 소식 받기 (알림 신청)</span>
                         </label>
                     </div>

@@ -91,47 +91,59 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Notification Form Handling
     // Pre-order & Notification Form Handling
+    // Pre-order & Notification Form Handling
     const preorderForm = document.getElementById('preorder-form');
     if (preorderForm) {
+        // 체크박스 상태 변경 시 hidden input 값 업데이트
+        const chkPreorder = document.getElementById('chk_preorder');
+        const chkAlarm = document.getElementById('chk_alarm');
+        const listHiddenIds = ['hidden_is_preorder', 'hidden_is_alarm'];
+
+        function updateHiddenValues() {
+            document.getElementById('hidden_is_preorder').value = chkPreorder.checked ? "O" : "X";
+            document.getElementById('hidden_is_alarm').value = chkAlarm.checked ? "O" : "X";
+        }
+
+        chkPreorder.addEventListener('change', updateHiddenValues);
+        chkAlarm.addEventListener('change', updateHiddenValues);
+
+        // 초기값 설정
+        updateHiddenValues();
+
         preorderForm.addEventListener('submit', function (e) {
-            e.preventDefault();
             const btn = document.getElementById('submitBtn');
+            const originalBtnText = btn.innerText;
 
             // 로딩 표시
-            const originalBtnText = btn.innerText;
             btn.innerText = '처리 중...';
-            btn.disabled = true;
+            // 주의: form이 submit 되는 동안 버튼을 disable 하면 submit이 안 될 수도 있으나,
+            // click 이벤트가 이미 발생했으므로 괜찮습니다. 안전을 위해 짧은 timeout 후 처리하거나 그대로 둡니다.
+            // 여기서는 UI 피드백만 줍니다.
 
-            // 폼 데이터 가져오기
-            const formData = new FormData(preorderForm);
+            // iframe 로드 완료 시 (서버 응답 시)
+            const iframe = document.getElementById('hidden_iframe');
+            let isSubmitted = false;
 
-            // [중요] 체크박스가 해제되어 있으면 formData에 아예 안 들어갑니다.
-            // 그래서 강제로 값을 확인해서 넣어줍니다.
-            const isPreorder = preorderForm.querySelector('input[name="is_preorder"]').checked;
-            const isAlarm = preorderForm.querySelector('input[name="is_alarm"]').checked;
-
-            // 기존 formData 덮어쓰기 (O/X 문자열로 명확하게 보냄)
-            formData.set('is_preorder', isPreorder ? "O" : "X");
-            formData.set('is_alarm', isAlarm ? "O" : "X");
-
-            // 배포한 URL
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbxk0XEWPMK6G4dYCyb_nvg3lQwXgSyamNhD5jngBQj9MmyTwNhCNel1rmtpOvMK4JCaww/exec';
-
-            fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
-                .then(response => {
-                    // no-cors 모드에서는 response가 불투명(opaque)하여 status를 확인할 수 없습니다.
-                    // 에러 없이 도달했다면 전송 성공으로 간주합니다.
-                    alert('신청이 완료되었습니다!');
-                    preorderForm.reset();
+            const onloadHandler = function () {
+                if (!isSubmitted) return; // 첫 로드 시 실행 방지
+                alert('신청이 완료되었습니다!');
+                preorderForm.reset();
+                // 체크박스와 hidden 값도 초기화 상태로 복구 (reset은 체크박스 초기화함)
+                // 하지만 hidden값은 수동 리셋 필요할 수 있음 -> updateHiddenValues()가 change 이벤트로 처리됨
+                // form.reset() 후 체크박스 상태가 돌아가면 change 이벤트를 수동으로 트리거해주는 것이 안전
+                setTimeout(() => {
+                    updateHiddenValues();
                     btn.innerText = originalBtnText;
-                    btn.disabled = false;
-                })
-                .catch(error => {
-                    console.error('Error!', error.message);
-                    alert('오류가 났어요. 다시 시도해주세요.');
-                    btn.innerText = originalBtnText;
-                    btn.disabled = false;
-                });
+                }, 100);
+
+                // 이벤트 리스너 제거 (중복 방지)
+                iframe.removeEventListener('load', onloadHandler);
+            };
+
+            iframe.addEventListener('load', onloadHandler);
+            isSubmitted = true;
+
+            // 기본 제출 동작(action으로 이동)을 허용합니다! e.preventDefault() 하지 않음!
         });
     }
 });
