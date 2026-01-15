@@ -95,25 +95,41 @@ document.addEventListener('DOMContentLoaded', () => {
     if (preorderForm) {
         preorderForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            const emailInput = this.querySelector('input[type="email"]');
-            const preorderCheck = this.querySelector('input[name="preorder"]');
-            const notificationCheck = this.querySelector('input[name="notification"]');
+            const btn = document.getElementById('submitBtn');
 
-            if (emailInput && emailInput.value) {
-                if (!preorderCheck.checked && !notificationCheck.checked) {
-                    alert('최소한 하나의 옵션을 선택해주세요.');
-                    return;
-                }
+            // 로딩 표시
+            const originalBtnText = btn.innerText;
+            btn.innerText = '처리 중...';
+            btn.disabled = true;
 
-                let message = '신청이 완료되었습니다!\n';
-                message += '이메일: ' + emailInput.value + '\n';
+            // 폼 데이터 가져오기
+            const formData = new FormData(preorderForm);
 
-                if (preorderCheck.checked) message += '- 사전 예약 (가격 할인) 신청됨\n';
-                if (notificationCheck.checked) message += '- 앱 출시 알림 신청됨';
+            // [중요] 체크박스가 해제되어 있으면 formData에 아예 안 들어갑니다.
+            // 그래서 강제로 값을 확인해서 넣어줍니다.
+            const isPreorder = preorderForm.querySelector('input[name="is_preorder"]').checked;
+            const isAlarm = preorderForm.querySelector('input[name="is_alarm"]').checked;
 
-                alert(message);
-                emailInput.value = '';
-            }
+            // 기존 formData 덮어쓰기 (O/X 문자열로 명확하게 보냄)
+            formData.set('is_preorder', isPreorder ? "O" : "X");
+            formData.set('is_alarm', isAlarm ? "O" : "X");
+
+            // 배포한 URL
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxk0XEWPMK6G4dYCyb_nvg3lQwXgSyamNhD5jngBQj9MmyTwNhCNel1rmtpOvMK4JCaww/exec';
+
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => {
+                    alert('신청이 완료되었습니다!');
+                    preorderForm.reset();
+                    btn.innerText = originalBtnText;
+                    btn.disabled = false;
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert('오류가 났어요. 다시 시도해주세요.');
+                    btn.innerText = originalBtnText;
+                    btn.disabled = false;
+                });
         });
     }
 });

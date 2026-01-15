@@ -159,16 +159,16 @@
 
                 <form id="preorder-form" class="preorder-form">
                     <div class="input-group">
-                        <input type="email" placeholder="이메일 주소를 입력하세요" required>
-                        <button type="submit" class="btn btn-primary">신청하기</button>
+                        <input type="email" name="email" placeholder="이메일 주소를 입력하세요" required>
+                        <button type="submit" id="submitBtn" class="btn btn-primary">신청하기</button>
                     </div>
                     <div class="checkbox-group">
                         <label class="checkbox-label">
-                            <input type="checkbox" name="preorder" checked>
+                            <input type="checkbox" name="is_preorder" value="true" checked>
                             <span>10,000명 달성 시 $0.99 할인 혜택 받기 (사전 예약)</span>
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" name="notification" checked>
+                            <input type="checkbox" name="is_alarm" value="true" checked>
                             <span>앱 출시 소식 받기 (알림 신청)</span>
                         </label>
                     </div>
