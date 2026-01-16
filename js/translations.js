@@ -102,7 +102,7 @@ const translations = {
         "footer.contact": "联系我们",
         "js.processing": "处理中...",
         "js.completed": "申请已完成！",
-        "feedback.form_url": "https://docs.google.com/forms/d/e/1FAIpQLSem1JXRNGct-cUahZoMPfALIEtMFX-mnat4Aod8rt6CL1visg/viewform?embedded=true"
+        "feedback.form_url": "https://docs.google.com/forms/d/e/1FAIpQLSdeb1SQ5ssoObTtHjW-Uh8VTafwXoPBTBN_xjLvZ8z2cOawhQ/viewform?embedded=true"
     },
     "vi": {
         "nav.features": "Tính năng",
@@ -137,6 +137,6 @@ const translations = {
         "footer.contact": "Liên hệ",
         "js.processing": "Đang xử lý...",
         "js.completed": "Đăng ký hoàn tất!",
-        "feedback.form_url": "https://docs.google.com/forms/d/e/1FAIpQLSem1JXRNGct-cUahZoMPfALIEtMFX-mnat4Aod8rt6CL1visg/viewform?embedded=true"
+        "feedback.form_url": "https://docs.google.com/forms/d/e/1FAIpQLSebMB6mjfmIEZDlRkvqANg199d5Ki5dC1Nmmik-6mwOyFjUJw/viewform?embedded=true"
     }
 };
