@@ -93,3 +93,112 @@
         min-height: 60px;
     }
 }
+
+/* Language Selector Styles */
+.lang-dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.lang-toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px;
+    transition: color 0.3s ease;
+    font-family: inherit;
+}
+
+.lang-toggle-btn:hover {
+    color: var(--primary-color);
+}
+
+.lang-dropdown-container {
+    /* margin removed to rely on flex gap */
+}
+
+/* Ensure font consistency */
+.current-lang-text {
+    font-weight: 500;
+}
+
+.lang-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 8px 0;
+    min-width: 120px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    list-style: none;
+    margin: 0;
+    z-index: 1000;
+}
+
+.lang-dropdown-container:hover .lang-dropdown-menu,
+.lang-dropdown-container.active .lang-dropdown-menu,
+.lang-dropdown-container:focus-within .lang-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    top: calc(100% + 10px);
+}
+
+.lang-dropdown-menu li {
+    display: block;
+    margin: 0;
+}
+
+.lang-dropdown-menu li button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 8px 16px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    color: #333;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.lang-dropdown-menu li button:hover {
+    background-color: #f5f5f5;
+    color: var(--primary-color);
+}
+
+/* Mobile Adjustments for Language Selector */
+@media (max-width: 768px) {
+    .lang-dropdown-menu {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        background: #f9f9f9;
+        margin-top: 10px;
+        display: none;
+        /* JS will toggle this */
+        opacity: 1;
+        visibility: visible;
+        width: 100%;
+        text-align: center;
+    }
+
+    .lang-dropdown-container.active .lang-dropdown-menu {
+        display: block;
+    }
+
+    .lang-dropdown-menu li button {
+        text-align: center;
+        padding: 12px;
+    }
+}
