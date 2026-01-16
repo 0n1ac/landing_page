@@ -62,32 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-    // Pre-order Counter Simulation
-    const countElement = document.getElementById('current-preorders');
-    if (countElement) {
-        let currentCount = 6542;
-        const targetCount = 10000;
-
-        function updateCount() {
-            // Simulate random increase
-            if (Math.random() > 0.6) {
-                currentCount += Math.floor(Math.random() * 3);
-                if (currentCount > targetCount) currentCount = targetCount;
-
-                countElement.innerText = currentCount.toLocaleString();
-
-                // Update progress bar width calculation
-                const progressFill = document.querySelector('.progress-fill');
-                if (progressFill) {
-                    const percentage = (currentCount / targetCount) * 100;
-                    progressFill.style.width = percentage + '%';
-                }
-            }
-        }
-
-        // Update every 2 seconds
-        setInterval(updateCount, 2000);
-    }
+    // Pre-order Counter logic removed
 
     // Notification Form Handling
     // Pre-order & Notification Form Handling
