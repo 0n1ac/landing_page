@@ -31,7 +31,8 @@ const translations = {
         "footer.privacy": "개인정보처리방침",
         "footer.contact": "문의하기",
         "js.processing": "처리 중...",
-        "js.completed": "신청이 완료되었습니다!"
+        "js.completed": "신청이 완료되었습니다!",
+        "feedback.form_url": "https://docs.google.com/forms/d/e/1FAIpQLSem1JXRNGct-cUahZoMPfALIEtMFX-mnat4Aod8rt6CL1visg/viewform?embedded=true"
     },
     "en": {
         "nav.features": "Features",
@@ -65,7 +66,8 @@ const translations = {
         "footer.privacy": "Privacy Policy",
         "footer.contact": "Contact Us",
         "js.processing": "Processing...",
-        "js.completed": "Application completed!"
+        "js.completed": "Application completed!",
+        "feedback.form_url": "https://docs.google.com/forms/d/e/1FAIpQLSdgZI_xib-N2JLAbOIcn_1S2EmzSyeAl8uYbAUsDRE0LwCLgg/viewform?embedded=true"
     },
     "zh": {
         "nav.features": "功能介绍",
@@ -99,7 +101,8 @@ const translations = {
         "footer.privacy": "隐私政策",
         "footer.contact": "联系我们",
         "js.processing": "处理中...",
-        "js.completed": "申请已完成！"
+        "js.completed": "申请已完成！",
+        "feedback.form_url": "https://docs.google.com/forms/d/e/1FAIpQLSem1JXRNGct-cUahZoMPfALIEtMFX-mnat4Aod8rt6CL1visg/viewform?embedded=true"
     },
     "vi": {
         "nav.features": "Tính năng",
@@ -133,6 +136,7 @@ const translations = {
         "footer.privacy": "Chính sách bảo mật",
         "footer.contact": "Liên hệ",
         "js.processing": "Đang xử lý...",
-        "js.completed": "Đăng ký hoàn tất!"
+        "js.completed": "Đăng ký hoàn tất!",
+        "feedback.form_url": "https://docs.google.com/forms/d/e/1FAIpQLSem1JXRNGct-cUahZoMPfALIEtMFX-mnat4Aod8rt6CL1visg/viewform?embedded=true"
     }
 };
