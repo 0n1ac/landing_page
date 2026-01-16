@@ -179,18 +179,35 @@
 
 /* Mobile Adjustments for Language Selector */
 @media (max-width: 768px) {
+    .lang-dropdown-container {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .lang-toggle-btn {
+        width: 100%;
+        justify-content: flex-start;
+        font-size: 1.2rem;
+        /* Match nav links */
+        padding: 0;
+        color: var(--text-main);
+    }
+
     .lang-dropdown-menu {
         position: static;
         transform: none;
         box-shadow: none;
-        background: #f9f9f9;
+        background: transparent;
         margin-top: 10px;
         display: none;
         /* JS will toggle this */
         opacity: 1;
         visibility: visible;
         width: 100%;
-        text-align: center;
+        text-align: left;
+        padding-left: 20px;
+        /* Indent sub-items */
+        border-left: 2px solid #eee;
     }
 
     .lang-dropdown-container.active .lang-dropdown-menu {
@@ -198,7 +215,14 @@
     }
 
     .lang-dropdown-menu li button {
-        text-align: center;
-        padding: 12px;
+        text-align: left;
+        padding: 10px 0;
+        font-size: 1rem;
+        color: var(--text-muted);
+    }
+
+    .lang-dropdown-menu li button:hover {
+        color: var(--primary-color);
+        background: none;
     }
 }
